@@ -1,42 +1,52 @@
 #include "Poker.h"
+#include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
 
-srand(time());
+Poker::Poker() {
 
-Poker::Poker(){
-	
-	pointPlayer=0;
-	pointBanker=0;
-	
-	for(int i=0; i<=51; i++){
-		card[i+1] = i%13+1;
+	pointPlayer = 0;
+	pointBanker = 0;
+
+	for (int i = 0; i <= 51; i++) {
+		card[i + 1] = i % 13 + 1;
 	}
-	
-	for(int j=1; j<=52; j++){
-		if(1<=j && j<=13){
+
+	for (int j = 1; j <= 52; j++) {
+		if (1 <= j && j <= 13) {
 			cardSuit[j] = "Spades";
-		}else if(14<=j && j<=26){
+		}
+		else if (14 <= j && j <= 26) {
 			cardSuit[j] = "Hearts";
-		}else if(27<=j && j<=39){
+		}
+		else if (27 <= j && j <= 39) {
 			cardSuit[j] = "Clubs";
-		}else{
+		}
+		else {
 			cardSuit[j] = "Diamonds";
 		}
 	}
-	
+
 }
 
-void Poker::shaffle(){
-	tempCard=rand()%53+1;
+Startscreen Poker::getStartscreen() {
+	return ss;
 }
 
-string Poker::getCardPlayer(){
-	return cardPlayer;
+void Poker::shaffle() {
+	tempCard = rand() % 53 + 1;
 }
 
-string Poker::getCardBanker(){
-	return cardBanker;
+void Poker::getCardPlayer() {
+	for (int i = 0; i < 5; i++) {
+		cout << cardPlayer[i] << " ";
+	}
+}
+
+void Poker::getCardBanker() {
+	for (int i = 0; i < 5; i++) {
+		cout << cardBanker[i] << " ";
+	}
 }
