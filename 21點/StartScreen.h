@@ -4,14 +4,13 @@
 #include <string>
 using namespace std;
 
-class Startscreen {
+class Screen {
 
 public:
     void getTitle();
     void getGameNotes();
     void getInstruction();
     void succeedInformation();
-
     void clear();
 
 };

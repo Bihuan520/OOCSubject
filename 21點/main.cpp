@@ -16,7 +16,7 @@ int main() {
 	game.getStartscreen().getInstruction();
 	game.getStartscreen().succeedInformation();
 
-	int enterNum = 999;
+	int enterNum = 9;
 	while (enterNum != 0) {
 		cin >> enterNum;
 	}

@@ -9,6 +9,14 @@ void Money::setBet(int b) {
 	bet = b;
 }
 
+void Money::winBet(int wb) {
+	wallet += bet;
+}
+
+void Money::loseBet(int lb) {
+	wallet -= bet;
+}
+
 int Money::getWallet() {
 	return wallet;
 }

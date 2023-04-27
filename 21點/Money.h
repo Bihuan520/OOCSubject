@@ -10,6 +10,8 @@ private:
 public:
 	Money();
 	void setBet(int);
+	void winBet(int);
+	void loseBet(int);
 	int getWallet();
 	int getBet();
 
