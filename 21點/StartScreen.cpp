@@ -12,7 +12,7 @@ void Screen::getTitle() {
 }
 
 void Screen::getGameNotes() {
-    cout << "PCCU PROJECT MADE BY: 9TH GROUP." << endl << endl;
+    cout << "PCCU PROJECT MADE BY: 6TH GROUP." << endl << endl;
 }
 
 void Screen::getInstruction() {

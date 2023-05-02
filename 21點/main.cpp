@@ -11,17 +11,17 @@ int main() {
 	srand(time(0));
 
 	Poker game;
-	game.getStartscreen().getTitle();
-	game.getStartscreen().getGameNotes();
-	game.getStartscreen().getInstruction();
-	game.getStartscreen().succeedInformation();
+	game.getScreen().getTitle();
+	game.getScreen().getGameNotes();
+	game.getScreen().getInstruction();
+	game.getScreen().succeedInformation();
 
 	int enterNum = 9;
 	while (enterNum != 0) {
 		cin >> enterNum;
 	}
 
-	game.getStartscreen().clear();
+	game.getScreen().clear();
 
 	cout << "SYS: GAME ENDED.";
 

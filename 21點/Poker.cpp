@@ -13,8 +13,25 @@ Poker::Poker() {
 	cardAmountBanker = 0;
 
 	for (int i = 0; i <= 51; i++) {
-		card[i + 1] = i % 13 + 1;
+		if (i == 10 || i == 11 || i == 12) {
+			card[i + 1] = 10;
+		}
+		else if (i == 23 || i == 24 || i == 25) {
+			card[i + 1] = 10;
+		}
+		else if (i == 36 || i == 37 || i == 38) {
+			card[i + 1] = 10;
+		}
+		else if (i == 49 || i == 50 || i == 51) {
+			card[i + 1] = 10;
+		}
+		else {
+			card[i + 1] = i % 13 + 1;
+		}
+		
 	}
+
+	
 
 	for (int j = 1; j <= 52; j++) {
 		if (1 <= j && j <= 13) {
@@ -31,45 +48,56 @@ Poker::Poker() {
 		}
 	}
 
-	askCardBankerContinue = true;
+	askBankerContinue = true;
 
-	while (askCardBankerContinue != true) {
-		askCardBanker();
+	while (askBankerContinue != true) {
+		randomBankerAsk();
 	}
 
 }
 
-Screen Poker::getStartscreen() {
+Screen Poker::getScreen() {
 	return ss;
+}
+
+Money Poker::getMoney() {
+	return mm;
+}
+void Poker::setMoney(Money m) {
+	mm = m;
 }
 
 void Poker::shaffle() {
 	drawCard = rand() % 53 + 1;
 }
 
+
+void Poker::cardA(int n) {
+	if (n == 1) {
+		pointPlayer += 1;
+	}
+	else if (n == 11) {
+		pointPlayer += 11;
+	}else {
+		cout << "只能輸入數字1或11，請重新輸入：";
+		cin >> n;
+		cardA(n);
+	}
+}
+
 void  Poker::randomBankerAsk() {
 
-	int percent80[5] = { 1, 1, 1, 1, 0 };
-	int percent60[5] = { 1, 1, 1, 0, 0 };
-	int percent20[5] = { 1, 0, 0, 0, 0 };
+	int chance[5] = { 1, 1, 0, 0, 0 };
 
-	if (pointBanker <= 12) {
-		askCardBankerContinue = true;
+	if (pointBanker < 17) {
+		askBankerContinue = true;
 	}
-	else if (pointBanker > 12 && pointBanker <= 15) {
+	else if (pointBanker >= 17 && pointBanker < 21) {
 		int tempchance = rand() % 5;
-		askCardBankerContinue = percent80[tempchance];
-	}
-	else if (pointBanker > 15 && pointBanker <= 18) {
-		int tempchance = rand() % 5;
-		askCardBankerContinue = percent60[tempchance];
-	}
-	else {
-		int tempchance = rand() % 5;
-		askCardBankerContinue = percent20[tempchance];
+		askBankerContinue = chance[tempchance];
 	}
 
-	if (askCardBankerContinue = true) {
+	if (askBankerContinue = true) {
 		askCardBanker();
 	}
 
@@ -84,9 +112,16 @@ void Poker::askCardPlayer() {
 
 void Poker::askCardBanker() {
 	shaffle();
-	cardPlayer[cardAmountBanker] = drawCard;
+	cardBanker[cardAmountBanker] = drawCard;
 	cardAmountBanker++;
-	pointBanker += card[drawCard];
+	if (drawCard == 1 || drawCard == 14 || drawCard == 27 || drawCard == 40) {
+		int n;
+		cout << "請輸入卡牌A的點數：";
+		cin >> n;
+		cardA(n);
+	}else {
+		pointBanker += card[drawCard];
+	}
 }
 
 void Poker::getCardPlayer() {
@@ -99,4 +134,12 @@ void Poker::getCardBanker() {
 	for (int i = 0; i < 5; i++) {
 		cout << cardBanker[i] << " ";
 	}
+}
+
+int Poker::getPointPlayer() const {
+	return pointPlayer;
+}
+
+int Poker::getPointBanker() const {
+	return pointBanker;
 }
