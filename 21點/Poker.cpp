@@ -28,10 +28,8 @@ Poker::Poker() {
 		else {
 			card[i + 1] = i % 13 + 1;
 		}
-		
-	}
 
-	
+	}
 
 	for (int j = 1; j <= 52; j++) {
 		if (1 <= j && j <= 13) {
@@ -46,12 +44,6 @@ Poker::Poker() {
 		else {
 			cardSuit[j] = "Diamonds";
 		}
-	}
-
-	askBankerContinue = true;
-
-	while (askBankerContinue != true) {
-		randomBankerAsk();
 	}
 
 }
@@ -71,14 +63,20 @@ void Poker::shaffle() {
 	drawCard = rand() % 53 + 1;
 }
 
-
+void Poker::playBanker() {
+	askBankerContinue = true;
+	while (askBankerContinue != true) {
+		randomBankerAsk();
+	}
+}
 void Poker::cardA(int n) {
 	if (n == 1) {
 		pointPlayer += 1;
 	}
 	else if (n == 11) {
 		pointPlayer += 11;
-	}else {
+	}
+	else {
 		cout << "只能輸入數字1或11，請重新輸入：";
 		cin >> n;
 		cardA(n);
@@ -107,21 +105,22 @@ void Poker::askCardPlayer() {
 	shaffle();
 	cardPlayer[cardAmountPlayer] = drawCard;
 	cardAmountPlayer++;
-	pointPlayer += card[drawCard];
+	if (drawCard == 1 || drawCard == 14 || drawCard == 27 || drawCard == 40) {
+		int n;
+		cout << "請輸入卡牌A的點數：";
+		cin >> n;
+		cardA(n);
+	}
+	else {
+		pointPlayer += card[drawCard];
+	}
 }
 
 void Poker::askCardBanker() {
 	shaffle();
 	cardBanker[cardAmountBanker] = drawCard;
 	cardAmountBanker++;
-	if (drawCard == 1 || drawCard == 14 || drawCard == 27 || drawCard == 40) {
-		int n;
-		cout << "請輸入卡牌A的點數：";
-		cin >> n;
-		cardA(n);
-	}else {
-		pointBanker += card[drawCard];
-	}
+	pointBanker += card[drawCard];
 }
 
 void Poker::getCardPlayer() {
@@ -142,4 +141,27 @@ int Poker::getPointPlayer() const {
 
 int Poker::getPointBanker() const {
 	return pointBanker;
+}
+
+void Poker::printMoney() {
+	int bet;
+	cout << ">> 你的錢包餘額 $" << mm.getWallet() << "；目前下注 $" << mm.getBet() << endl << endl;
+	while (getMoney().getBet() < 50) {
+		ss.betError();
+		cin >> bet;
+		mm.setBet(bet);
+		if (getMoney().getBet() >= 50) {
+			ss.betSuccess();
+		}
+	}
+	playBanker();
+}
+
+void Poker::printCardPlayer() {
+	cout << "目前你的手牌: ";
+	for (int i = 0; i < cardAmountPlayer; i++) {
+		cout << cardSuit[cardPlayer[i]] << card[cardPlayer[i]] << ", ";
+	}
+	cout << endl;
+	cout << "你的手牌總點數: " << getPointPlayer() << endl;
 }

@@ -4,16 +4,16 @@
 class Money {
 
 private:
-	int wallet;
-	int bet;
+	int wallet; // 令錢包餘額變數
+	int bet; // 令賭注金額變數
 
 public:
-	Money();
-	void setBet(int);
-	void winBet(int);
-	void loseBet(int);
-	int getWallet();
-	int getBet();
+	Money(); // 初始化錢包餘額
+	void setBet(int); // 設置賭注金額
+	void winBet(int); // 處理錢包餘額變動(贏)
+	void loseBet(int); // 處理錢包餘額變動(輸)
+	int getWallet(); // 取得錢包餘額
+	int getBet(); // 取得當前賭注金額
 
 };
 

@@ -7,11 +7,18 @@ using namespace std;
 class Screen {
 
 public:
-    void getTitle();
-    void getGameNotes();
-    void getInstruction();
+    // 印出顯示在執行視窗上的文字
+    void gameTitle();
+    void gameRules();
+    void gameProgrammer();
+    void gameInstruction();
     void succeedInformation();
-    void clear();
+    void betError();
+    void betSuccess();
+    void askContinueDraw();
+    void seperationLine();
+
+    void clear(); // 清除執行視窗上的文字
 
 };
 
