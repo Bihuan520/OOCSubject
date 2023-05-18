@@ -35,10 +35,12 @@ public:
 	void askCardBanker(); // 詢問莊家是否繼續
 	void getCardPlayer(); // 印出玩家目前牌組
 	void getCardBanker(); // 印出莊家目前牌組
+	int getCardAmountPlayer() const; // 取得玩家手牌數量
 	int getPointPlayer() const; // 取得玩家最終點數
 	int getPointBanker() const; // 取得莊家最終點數
-	void printMoney(); // 印出玩家目前錢包數與設定賭注 (*新增)
-	void printCardPlayer(); // 印出玩家目前牌組 (*新增)
+	void printMoney(); // 印出玩家目前錢包數與設定賭注
+	void printCardPlayer(); // 印出玩家目前牌組
+	void printCardBanker(); // 印出莊家目前牌組
 
 };
 

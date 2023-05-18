@@ -5,6 +5,11 @@ Money::Money() {
 	bet = 0;
 }
 
+Money::Money(int win, int lose) {
+	winBet(win);
+	loseBet(lose);
+}
+
 void Money::setBet(int b) {
 	bet = b;
 }

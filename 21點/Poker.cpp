@@ -135,6 +135,10 @@ void Poker::getCardBanker() {
 	}
 }
 
+int Poker::getCardAmountPlayer() const {
+	return cardAmountPlayer;
+}
+
 int Poker::getPointPlayer() const {
 	return pointPlayer;
 }
@@ -145,13 +149,14 @@ int Poker::getPointBanker() const {
 
 void Poker::printMoney() {
 	int bet;
-	cout << ">> 你的錢包餘額 $" << mm.getWallet() << "；目前下注 $" << mm.getBet() << endl << endl;
 	while (getMoney().getBet() < 50) {
 		ss.betError();
 		cin >> bet;
 		mm.setBet(bet);
 		if (getMoney().getBet() >= 50) {
+			ss.clear();
 			ss.betSuccess();
+			cout << ">> 你的錢包餘額 $" << mm.getWallet() << "；目前下注 $" << mm.getBet() << endl << endl;
 		}
 	}
 	playBanker();
@@ -164,4 +169,13 @@ void Poker::printCardPlayer() {
 	}
 	cout << endl;
 	cout << "你的手牌總點數: " << getPointPlayer() << endl;
+}
+
+void Poker::printCardBanker() {
+	cout << "對手的手牌: ";
+	for (int i = 0; i < cardAmountBanker; i++) {
+		cout << cardSuit[cardBanker[i]] << card[cardBanker[i]] << ", ";
+	}
+	cout << endl;
+	cout << "對手的手牌總點數: " << getPointBanker() << endl;
 }

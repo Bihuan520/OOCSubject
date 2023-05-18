@@ -9,6 +9,7 @@ private:
 
 public:
 	Money(); // 初始化錢包餘額
+	Money(int, int); // 
 	void setBet(int); // 設置賭注金額
 	void winBet(int); // 處理錢包餘額變動(贏)
 	void loseBet(int); // 處理錢包餘額變動(輸)

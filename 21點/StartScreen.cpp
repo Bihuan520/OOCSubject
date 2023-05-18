@@ -29,13 +29,12 @@ void Screen::gameProgrammer() {
 void Screen::gameInstruction() {
     cout << ">> 操作說明:" << endl << endl;
     cout << "輸入(1) -> 要求給牌" << endl;
-    cout << "輸入(2) -> 停止給牌" << endl;
-    cout << "輸入(3) -> 放棄本局" << endl;
-    cout << "輸入(4) -> 關閉遊戲" << endl << endl;
+    cout << "輸入(2) -> 停止給牌" << endl << endl;
 }
 
 void Screen::betError() {
     cout << "SYS: 你賭注設定不合法或尚未設定，請重新下注！" << endl;
+    cout << "請輸入下注金額：";
 }
 
 void Screen::betSuccess() {
