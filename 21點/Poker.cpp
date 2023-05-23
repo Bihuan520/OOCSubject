@@ -55,8 +55,20 @@ Screen Poker::getScreen() {
 Money Poker::getMoney() {
 	return mm;
 }
-void Poker::setMoney(Money m) {
-	mm = m;
+
+void Poker::setMoney(int wb, int lb) {
+	mm.winBet(wb);
+	mm.loseBet(lb);
+	mm.setBet(0);
+}
+
+void Poker::restart() {
+	memset(cardPlayer, 0, sizeof(cardPlayer));
+	memset(cardBanker, 0, sizeof(cardBanker));
+	pointPlayer = 0;
+	pointBanker = 0;
+	cardAmountPlayer = 0;
+	cardAmountBanker = 0;
 }
 
 void Poker::shaffle() {
@@ -65,7 +77,7 @@ void Poker::shaffle() {
 
 void Poker::playBanker() {
 	askBankerContinue = true;
-	while (askBankerContinue != true) {
+	while (askBankerContinue == true && cardAmountBanker < 5) {
 		randomBankerAsk();
 	}
 }
@@ -84,27 +96,23 @@ void Poker::cardA(int n) {
 }
 
 void  Poker::randomBankerAsk() {
-
-	int chance[5] = { 1, 1, 0, 0, 0 };
-
 	if (pointBanker < 17) {
 		askBankerContinue = true;
 	}
-	else if (pointBanker >= 17 && pointBanker < 21) {
-		int tempchance = rand() % 5;
-		askBankerContinue = chance[tempchance];
+	else {
+		askBankerContinue = false;
 	}
 
-	if (askBankerContinue = true) {
+	if (askBankerContinue == true) {
 		askCardBanker();
 	}
-
 }
 
 void Poker::askCardPlayer() {
 	shaffle();
 	cardPlayer[cardAmountPlayer] = drawCard;
 	cardAmountPlayer++;
+
 	if (drawCard == 1 || drawCard == 14 || drawCard == 27 || drawCard == 40) {
 		int n;
 		cout << "請輸入卡牌A的點數：";
@@ -124,15 +132,17 @@ void Poker::askCardBanker() {
 }
 
 void Poker::getCardPlayer() {
-	for (int i = 0; i <= cardAmountPlayer; i++) {
-		cout << cardPlayer[i] << " ";
+	for (int i = 0; i < cardAmountPlayer; i++) {
+		cout << cardSuit[cardPlayer[i]] << card[cardPlayer[i]] << ", ";
 	}
+	cout << endl;
 }
 
 void Poker::getCardBanker() {
-	for (int i = 0; i < 5; i++) {
-		cout << cardBanker[i] << " ";
+	for (int i = 0; i < cardAmountBanker; i++) {
+		cout << cardSuit[cardBanker[i]] << card[cardBanker[i]] << ", ";
 	}
+	cout << endl;
 }
 
 int Poker::getCardAmountPlayer() const {
@@ -148,34 +158,40 @@ int Poker::getPointBanker() const {
 }
 
 void Poker::printMoney() {
-	int bet;
-	while (getMoney().getBet() < 50) {
+	cout << ">> 你的錢包餘額 $" << mm.getWallet() << "；目前下注 $" << mm.getBet() << endl << endl;
+	ss.seperationLine();
+}
+
+void Poker::setNewBet() {
+	int bet = 0;
+
+	while (getMoney().getBet() < 50 || getMoney().getWallet() < bet) {
+		printMoney();
 		ss.betError();
 		cin >> bet;
 		mm.setBet(bet);
-		if (getMoney().getBet() >= 50) {
+		ss.clear();
+
+		if (getMoney().getBet() >= 50 && getMoney().getWallet() >= bet) {
 			ss.clear();
+			printMoney();
 			ss.betSuccess();
-			cout << ">> 你的錢包餘額 $" << mm.getWallet() << "；目前下注 $" << mm.getBet() << endl << endl;
 		}
 	}
+
 	playBanker();
 }
 
 void Poker::printCardPlayer() {
 	cout << "目前你的手牌: ";
-	for (int i = 0; i < cardAmountPlayer; i++) {
-		cout << cardSuit[cardPlayer[i]] << card[cardPlayer[i]] << ", ";
-	}
-	cout << endl;
-	cout << "你的手牌總點數: " << getPointPlayer() << endl;
+	getCardPlayer();
+
+	cout << "你的手牌總點數: " << getPointPlayer() << endl << endl;
 }
 
 void Poker::printCardBanker() {
 	cout << "對手的手牌: ";
-	for (int i = 0; i < cardAmountBanker; i++) {
-		cout << cardSuit[cardBanker[i]] << card[cardBanker[i]] << ", ";
-	}
-	cout << endl;
-	cout << "對手的手牌總點數: " << getPointBanker() << endl;
+	getCardBanker();
+
+	cout << "對手的手牌總點數: " << getPointBanker() << endl << endl;
 }

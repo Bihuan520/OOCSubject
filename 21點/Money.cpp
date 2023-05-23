@@ -1,13 +1,8 @@
-#include "money.h"
+#include "Money.h"
 
 Money::Money() {
 	wallet = 1000;
 	bet = 0;
-}
-
-Money::Money(int win, int lose) {
-	winBet(win);
-	loseBet(lose);
 }
 
 void Money::setBet(int b) {
@@ -15,17 +10,17 @@ void Money::setBet(int b) {
 }
 
 void Money::winBet(int wb) {
-	wallet += bet;
+	wallet += wb;
 }
 
 void Money::loseBet(int lb) {
-	wallet -= bet;
+	wallet -= lb;
 }
 
-int Money::getWallet() {
+int Money::getWallet() const {
 	return wallet;
 }
 
-int Money::getBet() {
+int Money::getBet() const {
 	return bet;
 }

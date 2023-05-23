@@ -1,9 +1,6 @@
 #ifndef STARTSCREEN_H
 #define STARTSCREEN_H
 
-#include <string>
-using namespace std;
-
 class Screen {
 
 public:
@@ -16,6 +13,10 @@ public:
     void betError();
     void betSuccess();
     void askContinueDraw();
+    void winMessage();
+    void loseMessage();
+    void tieMessage();
+    void gameOverMessage();
     void seperationLine();
 
     void clear(); // 清除執行視窗上的文字

@@ -9,12 +9,11 @@ private:
 
 public:
 	Money(); // 初始化錢包餘額
-	Money(int, int); // 
 	void setBet(int); // 設置賭注金額
 	void winBet(int); // 處理錢包餘額變動(贏)
 	void loseBet(int); // 處理錢包餘額變動(輸)
-	int getWallet(); // 取得錢包餘額
-	int getBet(); // 取得當前賭注金額
+	int getWallet() const; // 取得錢包餘額
+	int getBet() const; // 取得當前賭注金額
 
 };
 

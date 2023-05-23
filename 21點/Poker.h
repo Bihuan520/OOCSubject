@@ -26,11 +26,12 @@ public:
 	Poker(); // 初始化整副牌組
 	Screen getScreen();
 	Money getMoney();
-	void setMoney(Money);
+	void setMoney(int, int); // 處理錢包餘額變動
+	void restart(); // 重設遊戲
 	void playBanker(); // 莊家遊玩
 	void shaffle(); // 隨機抽取下一張牌
 	void cardA(int); // 詢問玩家 A 牌點數
-	void randomBankerAsk(); // 機率決定莊家17點後是否繼續
+	void randomBankerAsk(); // 決定莊家17點後是否繼續
 	void askCardPlayer(); // 詢問玩家是否繼續
 	void askCardBanker(); // 詢問莊家是否繼續
 	void getCardPlayer(); // 印出玩家目前牌組
@@ -38,9 +39,10 @@ public:
 	int getCardAmountPlayer() const; // 取得玩家手牌數量
 	int getPointPlayer() const; // 取得玩家最終點數
 	int getPointBanker() const; // 取得莊家最終點數
-	void printMoney(); // 印出玩家目前錢包數與設定賭注
-	void printCardPlayer(); // 印出玩家目前牌組
-	void printCardBanker(); // 印出莊家目前牌組
+	void printMoney(); // 印出玩家目前錢包數與賭注
+	void setNewBet(); // 設定賭注
+	void printCardPlayer(); // 印出玩家目前牌組 & 點數
+	void printCardBanker(); // 印出莊家目前牌組 & 點數
 
 };
 

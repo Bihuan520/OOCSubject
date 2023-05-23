@@ -1,25 +1,35 @@
-ï»¿#include "StartScreen.h"
-
+#include "StartScreen.h"
 #include <iostream>
-#include <string>
 using namespace std;
 
 void Screen::gameTitle() {
     cout << "               ********************             " << endl;
-    cout << "               * äºŒåä¸€é»å¡ç‰ŒéŠæˆ² *               " << endl;
+    cout << "               * ¤G¤Q¤@ÂI¥dµP¹CÀ¸ *               " << endl;
     cout << "               ********************             " << endl << endl << endl;
 }
 
 void Screen::gameRules() {
-    cout << ">> éŠæˆ²èªªæ˜ & è¦å‰‡:" << endl << endl;
-    cout << "ï¼é€éç¨‹å¼æ¨¡æ“¬é€²è¡Œ21é»å¡ç‰ŒéŠæˆ²çš„éç¨‹ã€‚" << endl;
-    cout << "ï¼æœ¬æ¬¡å°ˆé¡Œçµåˆäº†å°å‹è³­æ³¨æ©Ÿåˆ¶ï¼Œä»¥å¢åŠ éŠæˆ²å¯ç©æ€§ã€‚" << endl;
-    cout << "ï¼èˆ‡ä¸€èˆ¬å¯¦é«”å¡ç‰Œç©æ³•ä¸¦ç„¡å¤ªå¤§å·®ç•°ï¼Œç°¡æ˜“è¦å‰‡èˆ‡éŠç©æ–¹å¼å¦‚ä¸‹ï¼š" << endl;
-    cout << "  1. Aå¯ä½œ1é»æˆ–11é»ï¼›2~10ä¾ç‰Œé¢æ‰€ç¤ºï¼›Jã€Qã€Kä½œ10é»ã€‚" << endl;
-    cout << "  2. æ“æœ‰æœ€é«˜é»æ•¸çš„ç©å®¶ç²å‹ï¼Œä½†å…¶é»æ•¸å¿…é ˆç­‰æ–¼æˆ–ä½æ–¼21é»ã€‚" << endl;
-    cout << "  3. è‹¥æŠ½æ»¿äº”å¼µå¡ä¸”é»æ•¸â‰¦21é»ï¼Œå‰‡å¯ç›´æ¥å®£å¸ƒç²å‹ã€‚" << endl;
-    cout << "  4. èŠå®¶(é›»è…¦)æœƒåŠ ç‰Œç›´è‡³â‰§17é»ï¼›ä½†ç©å®¶å‰‡ä¸åœ¨æ­¤é™ã€‚" << endl;
-    cout << "  5. è³­æ³¨é‡‘é¡æœ€ä½ç‚º50$" << endl << endl << endl;
+    cout << ">> ¹CÀ¸»¡©ú & ³W«h:" << endl << endl;
+    cout << "¡D³z¹Lµ{¦¡¼ÒÀÀ¶i¦æ21ÂI¥dµP¹CÀ¸ªº¹Lµ{¡C" << endl;
+    cout << "¡D¥»¦¸±MÃDµ²¦X¤F¤p«¬½äª`¾÷¨î¡A¥H¼W¥[¹CÀ¸¥iª±©Ê¡C" << endl;
+    cout << "¡D»P¤@¯ë¹êÅé¥dµPª±ªk¨ÃµL¤Ó¤j®t²§¡AÂ²©ö³W«h»P¹Cª±¤è¦¡¦p¤U¡G" << endl;
+    cout << "  1. A¥i§@1ÂI©Î11ÂI¡F2~10¨ÌµP­±©Ò¥Ü¡FJ¡BQ¡BK§@10ÂI¡C" << endl;
+    cout << "  2. ²ø®a(¹q¸£) ·|¥[µPª½¦Ü¡Ù17ÂI¡F¦ıª±®a«h¤£¦b¦¹­­¡C" << endl;
+    cout << "  3. ½äª`ª÷ÃB³Ì§C³]¸m¬°50$¡A¤]¤£¯à¶W¹L¿ú¥]«ù¦³ª÷ÃB¡C" << endl;
+    cout << "  4. ­Y¿ú¥]«ù¦³ª÷ÃB<50$¡A«h¹CÀ¸µ²§ô¡]¯}²£¡^¡C" << endl << endl;
+
+    seperationLine();
+
+    cout << ">> ½äª÷¼W´î³W«h:" << endl << endl;
+    cout << "¡Dª±®aÀò³Ó®É¡A¬Ò¥t¥~Àò±o¥ı«e¤Uª`ªº½äª÷¤§ª÷ÃB¡C" << endl;
+    cout << "¡D­Y¦³¥[¦¨¤§¹CÀ¸µ²ªG¡A«h¨Ì¬A¸¹©Òªí¥Ü¡C" << endl;
+    cout << "  1. ­Yª±®a«ù¦³¤­±iµP¥B<21ÂI¡A«hª½±µÀò³Ó¡]½äª÷*2¡^¡C" << endl;
+    cout << "  2. ­Yª±®a«ù¦³¤­±iµP¥B=21ÂI¡A«hª½±µÀò³Ó¡]½äª÷*4¡^¡C" << endl;
+    cout << "  3. ª±®a©M²ø®aªºÁ`ÂI¼Æ¬Û¦P¡A«h«Å¥¬©M§½¡]½äª÷µoÁÙ¡^¡C" << endl;
+    cout << "  4. ª±®a©M²ø®aªºÁ`ÂI¼Æ³£¡Ø21ÂI¡A«hÂI¼Æ¤jªÌÀò³Ó¡C" << endl;
+    cout << "  5. ª±®aªºÁ`ÂI¼ÆÃz¤F¡]¡Ù21ÂI¡^¡A«hª±®a¿é±¼¤Uª`ª÷ÃB¡C" << endl;
+    cout << "  6. ²ø®aªºÁ`ÂI¼ÆÃz¤F¡]¡Ù21ÂI¡^¡A«hª±®aÄ¹±o¤Uª`ª÷ÃB¡C" << endl;
+    cout << "  7. ª±®a©M²ø®aªºÁ`ÂI¼Æ³£Ãz¤F¡]¡Ù21ÂI¡^¡A«hª±®a¿é±¼¤Uª`ª÷ÃB¡C" << endl << endl << endl;
 }
 
 void Screen::gameProgrammer() {
@@ -27,25 +37,42 @@ void Screen::gameProgrammer() {
 }
 
 void Screen::gameInstruction() {
-    cout << ">> æ“ä½œèªªæ˜:" << endl << endl;
-    cout << "è¼¸å…¥(1) -> è¦æ±‚çµ¦ç‰Œ" << endl;
-    cout << "è¼¸å…¥(2) -> åœæ­¢çµ¦ç‰Œ" << endl << endl;
+    cout << ">> ¾Ş§@»¡©ú:" << endl << endl;
+    cout << "¿é¤J(1) -> ­n¨Dµ¹µP" << endl;
+    cout << "¿é¤J(2) -> °±¤îµ¹µP" << endl << endl;
 }
 
 void Screen::betError() {
-    cout << "SYS: ä½ è³­æ³¨è¨­å®šä¸åˆæ³•æˆ–å°šæœªè¨­å®šï¼Œè«‹é‡æ–°ä¸‹æ³¨ï¼" << endl;
-    cout << "è«‹è¼¸å…¥ä¸‹æ³¨é‡‘é¡ï¼š";
+    cout << "SYS: §A½äª`³]©w¤£¦Xªk©Î©|¥¼³]©w¡A½Ğ­«·s¤Uª`¡I" << endl;
+    cout << "½Ğ¿é¤J¤Uª`ª÷ÃB¡]¾ã¼Æ¡^¡G";
 }
 
 void Screen::betSuccess() {
-    cout << "SYS: è³­æ³¨é‡æ–°ä¸‹æ³¨æˆåŠŸï¼" << endl << endl;
+    cout << "SYS: ½äª`­«·s¤Uª`¦¨¥\¡I" << endl << endl;
 }
 void Screen::succeedInformation() {
-    cout << "SYS: è«‹è¼¸å…¥æ•¸å­—0ä»¥ç¹¼çºŒ..." << endl;
+    cout << "SYS: ½Ğ¿é¤J¼Æ¦r0¥HÄ~Äò..." << endl;
 }
 
 void Screen::askContinueDraw() {
-    cout << "æ˜¯å¦ç¹¼çºŒæŠ½ç‰Œ?" << endl;
+    cout << "SYS: ¬O§_Ä~Äò©âµP?" << endl;
+}
+
+void Screen::winMessage() {
+    cout << "SYS: §AÄ¹¤F¡I" << endl << endl;
+}
+
+void Screen::loseMessage() {
+    cout << "SYS: §A¿é¤F¡I" << endl << endl;
+}
+
+void Screen::tieMessage() {
+    cout << "SYS: ¥­¤â¡I" << endl << endl;
+}
+
+void Screen::gameOverMessage() {
+    cout << "SYS: §A¯}²£¤F¡A¹CÀ¸µ²§ô¡I" << endl;
+    cout << "SYS: ­«±Ò¹CÀ¸µøµ¡¥H¶}©l·s¹CÀ¸¡I" << endl << endl;
 }
 
 void Screen::seperationLine() {
