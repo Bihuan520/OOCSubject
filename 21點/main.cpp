@@ -29,7 +29,7 @@ int main() {
 
 	game.getScreen().clear(); // 清除執行視窗上的文字 
 
-	while (game.getMoney().getWallet() > 50) {
+	while (game.getMoney().getWallet() >= 50) {
 
 		game.setNewBet(); // 處理莊家遊玩 & 設定賭注
 		game.askCardPlayer(); // 起初玩家先抽一張牌
